@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking Cost Calculator</title>
+    
+</head>
+<body>
+    <h1>Room Booking Cost Calculator</h1>
+    <form>
+        <label for="roomType">Select room type:</label>
+        <select id="roomType">
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+        </select>
+        <br>
+        <label for="numNights">Enter number of nights:</label>
+        <input type="number" id="numNights" placeholder="Number of nights">
+        <br>
+        <button type="button" onclick="calculateCost()">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculateCost() {
+            const roomType = document.querySelector("#roomType").value;
+            const numNights = parseInt(document.querySelector("#numNights").value);
+
+            const prices = {
+                single: 100, // Price per night for Single room
+                double: 150, // Price per night for Double room
+                suite: 250 // Price per night for Suite
+            };
+
+            const totalCost = prices[roomType] * numNights;
+
+            document.querySelector("#result").textContent = `Total cost: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

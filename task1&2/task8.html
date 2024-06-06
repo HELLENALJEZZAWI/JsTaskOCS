@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+   
+</head>
+<body>
+    <h1>Password Strength Checker</h1>
+    <form>
+        <label for="password">Enter your password:</label>
+        <input type="password" id="password" placeholder="Type your password here" onkeyup="checkPasswordStrength()">
+        <div class="power-container">
+            <div id="power-point"></div>
+        </div>
+    </form>
+    <p id="strength-message"></p>
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById("password").value;
+            const strengthIndicator = document.getElementById("power-point");
+            const strengthMessage = document.getElementById("strength-message");
+
+          
+            const lengthStrength = password.length >= 8 ? 1 : 0;
+
+          
+            const uppercaseStrength = /[A-Z]/.test(password) ? 1 : 0;
+
+            
+            const lowercaseStrength = /[a-z]/.test(password) ? 1 : 0;
+
+            
+            const numberStrength = /\d/.test(password) ? 1 : 0;
+
+            
+            const specialCharStrength = /[!@#$%^&*]/.test(password) ? 1 : 0;
+
+            const totalStrength = lengthStrength + uppercaseStrength + lowercaseStrength + numberStrength + specialCharStrength;
+
+            strengthIndicator.style.width = `${totalStrength * 20}%`;
+
+            if (totalStrength === 5) {
+                strengthMessage.textContent = "Strong password!";
+            } else if (totalStrength >= 3) {
+                strengthMessage.textContent = "Moderate password.";
+            } else {
+                strengthMessage.textContent = "Weak password. Please improve it.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Grade Calculator</title>
+
+</head>
+<body>
+    <h1>Exam Grade Calculator</h1>
+    <form>
+        <label for="subject1">Subject 1:</label>
+        <input type="number" id="subject1" placeholder="Enter grade">
+        <br>
+        <label for="subject2">Subject 2:</label>
+        <input type="number" id="subject2" placeholder="Enter grade">
+        <br>
+        <label for="subject3">Subject 3:</label>
+        <input type="number" id="subject3" placeholder="Enter grade">
+        <br>
+        <button type="button" onclick="calculateAverage()">Calculate Average</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculateAverage() {
+            const grade1 = parseFloat(document.querySelector("#subject1").value);
+            const grade2 = parseFloat(document.querySelector("#subject2").value);
+            const grade3 = parseFloat(document.querySelector("#subject3").value);
+
+            const average = (grade1 + grade2 + grade3) / 3;
+
+            document.querySelector("#result").innerHTML = `Average grade: ${average.toFixed(2)}`;
+
+            if (average >= 60) {
+                document.querySelector("#result").innerHTML += "<br>Pass!";
+            } else {
+                document.querySelector("#result").innerHTML += "<br>Fail!";
+            }
+        }
+    </script>
+</body>
+</html>

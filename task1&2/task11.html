@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Eligibility Checker</title>
+   
+</head>
+<body>
+    <h1>Voter Eligibility Checker</h1>
+    <form>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" placeholder="Age">
+        <br>
+        <label for="nationality">Enter your nationality:</label>
+        <input type="text" id="nationality" placeholder="Nationality">
+        <br>
+        <button type="button" onclick="checkEligibility()">Check Eligibility</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function checkEligibility() {
+            const age = parseInt(document.querySelector("#age").value);
+            const nationality = document.querySelector("#nationality").value.toLowerCase();
+
+            if (isNaN(age) || age < 0) {
+                document.querySelector("#result").textContent = "Please provide a valid age.";
+            } else if (nationality === "Jordanian") {
+                if (age >= 18) {
+                    document.querySelector("#result").textContent = "You are eligible to vote!";
+                } else {
+                    document.querySelector("#result").textContent = "You must be at least 18 years old to vote.";
+                }
+            } else {
+                document.querySelector("#result").textContent = "Only Jordanian citizens are eligible to vote.";
+            }
+        }
+    </script>
+</body>
+</html>

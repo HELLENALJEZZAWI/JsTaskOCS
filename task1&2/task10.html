@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Loan System</title>
+   
+</head>
+<body>
+    <h1>Library Book Loan System</h1>
+    <form>
+        <label for="userType">Select user type:</label>
+        <select id="userType">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+        <br>
+        <label for="numBooks">Enter the number of books:</label>
+        <input type="number" id="numBooks" placeholder="Number of books">
+        <br>
+        <button type="button" onclick="checkLoanApproval()">Check Loan Approval</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function checkLoanApproval() {
+            const userType = document.querySelector("#userType").value;
+            const numBooks = parseInt(document.querySelector("#numBooks").value);
+
+            let maxBooks;
+
+            if (userType === "student") {
+                maxBooks = 3;
+            } else if (userType === "teacher") {
+                maxBooks = 5;
+            } else {
+                document.querySelector("#result").textContent = "Invalid user type!";
+                return;
+            }
+
+            if (numBooks > maxBooks) {
+                document.querySelector("#result").textContent = `Loan not approved. Maximum allowed books: ${maxBooks}`;
+            } else {
+                document.querySelector("#result").textContent = "Loan approved!";
+            }
+        }
+    </script>
+</body>
+</html>

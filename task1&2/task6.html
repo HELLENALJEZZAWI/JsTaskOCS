@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+   
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <form>
+        <label for="celsiusInput">Enter temperature in Celsius:</label>
+        <input type="number" id="celsiusInput" placeholder="Celsius">
+        <br>
+        <button type="button" onclick="convertTemperature()">Convert</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() {
+            const celsius = parseFloat(document.querySelector("#celsiusInput").value);
+
+            if (isNaN(celsius)) {
+                document.querySelector("#result").textContent = "Please provide a valid temperature.";
+            } else {
+                const fahrenheit = (celsius * 1.8) + 32;
+
+                if (celsius < 0) {
+                    document.querySelector("#result").innerHTML = `Below freezing! ${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F.`;
+                } else if (celsius > 100) {
+                    document.querySelector("#result").innerHTML = `Above boiling! ${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F.`;
+                } else {
+                    document.querySelector("#result").innerHTML = `Normal temperature. ${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F.`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

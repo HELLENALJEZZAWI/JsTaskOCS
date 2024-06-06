@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Price Calculator</title>
+   
+</head>
+<body>
+    <h1>Order Price Calculator</h1>
+    <form>
+        <label for="pizza">Pizza ($10.00):</label>
+        <input type="number" id="pizza" placeholder="Quantity">
+        <br>
+        <label for="pasta">Pasta ($8.50):</label>
+        <input type="number" id="pasta" placeholder="Quantity">
+        <br>
+        <label for="salad">Salad ($6.00):</label>
+        <input type="number" id="salad" placeholder="Quantity">
+        <br>
+        <button type="button" onclick="calculateTotal()">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculateTotal() {
+            const pizzaQty = parseInt(document.querySelector("#pizza").value) || 0;
+            const pastaQty = parseInt(document.querySelector("#pasta").value) || 0;
+            const saladQty = parseInt(document.querySelector("#salad").value) || 0;
+
+            const pizzaPrice = 10.00;
+            const pastaPrice = 8.50;
+            const saladPrice = 6.00;
+
+            const totalItems = pizzaQty + pastaQty + saladQty;
+            let totalPrice = (pizzaQty * pizzaPrice) + (pastaQty * pastaPrice) + (saladQty * saladPrice);
+
+           
+            if (totalItems > 1) {
+                totalPrice *= 0.9; // 10% discount
+            }
+
+            document.querySelector("#result").textContent = `Total price: $${totalPrice.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

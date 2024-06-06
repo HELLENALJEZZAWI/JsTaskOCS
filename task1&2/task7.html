@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+   
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <form>
+        <label for="totalAmount">Total Amount ($):</label>
+        <input type="number" id="totalAmount" placeholder="Enter total amount">
+        <br>
+        <button type="button" onclick="applyDiscount()">Apply Discount</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function applyDiscount() {
+            const totalAmount = parseFloat(document.querySelector("#totalAmount").value);
+
+            if (isNaN(totalAmount)) {
+                document.querySelector("#result").textContent = "Please provide a valid amount.";
+            } else {
+                let discountedAmount;
+
+                if (totalAmount > 200) {
+                    discountedAmount = totalAmount * 0.8; // 20% discount
+                } else if (totalAmount > 100) {
+                    discountedAmount = totalAmount * 0.9; // 10% discount
+                } else {
+                    discountedAmount = totalAmount; // No discount
+                }
+
+                document.querySelector("#result").innerHTML = `Final amount after discount: $${discountedAmount.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>

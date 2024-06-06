@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login System</title>
+   
+</head>
+<body>
+    <h1>User Login System</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <br>
+        <button type="button" onclick="checkCredentials()">Login</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function checkCredentials() {
+            const enteredUsername = document.querySelector("#username").value;
+            const enteredPassword = document.querySelector("#password").value;
+
+            // Predefined credentials (you can customize these)
+            const validUsername = "myuser";
+            const validPassword = "mypassword";
+
+            if (enteredUsername === validUsername && enteredPassword === validPassword) {
+                document.querySelector("#result").textContent = "Login successful!";
+            } else {
+                document.querySelector("#result").textContent = "Incorrect credentials. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>

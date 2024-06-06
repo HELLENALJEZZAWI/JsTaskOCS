@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Pricing</title>
+ 
+</head>
+<body>
+    <h1>Movie Ticket Pricing</h1>
+    <form>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" placeholder="Age">
+        <br>
+        <label for="movieType">Select movie type:</label>
+        <select id="movieType">
+            <option value="regular">Regular</option>
+            <option value="3d">3D</option>
+        </select>
+        <br>
+        <button type="button" onclick="calculateTicketPrice()">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculateTicketPrice() {
+            const age = parseInt(document.querySelector("#age").value);
+            const movieType = document.querySelector("#movieType").value;
+
+            let ticketPrice;
+
+            if (age < 12) {
+                ticketPrice = movieType === "3d" ? 8 : 6; // Discounted price for children
+            } else {
+                ticketPrice = movieType === "3d" ? 12 : 10; // Regular price for adults
+            }
+
+            document.querySelector("#result").textContent = `Ticket price: $${ticketPrice.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

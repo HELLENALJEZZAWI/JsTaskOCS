@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light Action Simulator</title>
+   
+</head>
+<body>
+    <h1>Traffic Light Action Simulator</h1>
+    <form>
+        <label for="lightColor">Select current light color:</label>
+        <select id="lightColor">
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+        </select>
+        <br>
+        <button type="button" onclick="determineAction()">Determine Action</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function determineAction() {
+            const lightColor = document.querySelector("#lightColor").value;
+
+            let action;
+
+            if (lightColor === "red") {
+                action = "Stop!";
+            } else if (lightColor === "yellow") {
+                action = "Slow down.";
+            } else if (lightColor === "green") {
+                action = "Go!";
+            } else {
+                action = "Invalid color.";
+            }
+
+            document.querySelector("#result").textContent = action;
+        }
+    </script>
+</body>
+</html>

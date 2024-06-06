@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day of the Week</title>
+  
+</head>
+<body>
+    <h1>Day of the Week</h1>
+    <form>
+        <label for="dayNumber">Enter a number (1-7):</label>
+        <input type="number" id="dayNumber" placeholder="1-7">
+        <br>
+        <button type="button" onclick="displayDay()">Display Day</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function displayDay() {
+            const dayNumber = parseInt(document.querySelector("#dayNumber").value);
+
+            let dayName;
+
+            if (dayNumber >= 1 && dayNumber <= 7) {
+                const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                dayName = daysOfWeek[dayNumber - 1];
+            } else {
+                dayName = "Invalid day number!";
+            }
+
+            document.querySelector("#result").textContent = dayName;
+        }
+    </script>
+</body>
+</html>

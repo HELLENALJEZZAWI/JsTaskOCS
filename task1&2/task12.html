@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Categorization</title>
+   
+</head>
+<body>
+    <h1>Temperature Categorization</h1>
+    <form>
+        <label for="temperature">Enter the temperature (°C):</label>
+        <input type="number" id="temperature" placeholder="Temperature">
+        <br>
+        <button type="button" onclick="categorizeTemperature()">Categorize</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function categorizeTemperature() {
+            const temperature = parseFloat(document.querySelector("#temperature").value);
+
+            if (isNaN(temperature)) {
+                document.querySelector("#result").textContent = "Please provide a valid temperature.";
+            } else {
+                if (temperature < 0) {
+                    document.querySelector("#result").textContent = "Very Cold!";
+                } else if (temperature >= 0 && temperature <= 15) {
+                    document.querySelector("#result").textContent = "Cold.";
+                } else if (temperature >= 16 && temperature <= 25) {
+                    document.querySelector("#result").textContent = "Warm.";
+                } else {
+                    document.querySelector("#result").textContent = "Hot!";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

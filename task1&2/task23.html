@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Angle Checker</title>
+  
+</head>
+<body>
+    <h1>Triangle Angle Checker</h1>
+    <form>
+        <label for="angle1">Enter angle 1 (degrees):</label>
+        <input type="number" id="angle1" placeholder="Angle 1">
+        <br>
+        <label for="angle2">Enter angle 2 (degrees):</label>
+        <input type="number" id="angle2" placeholder="Angle 2">
+        <br>
+        
+        <button type="button" onclick="checkTriangle()">Check</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function checkTriangle() {
+            const angle1 = parseFloat(document.querySelector("#angle1").value);
+            const angle2 = parseFloat(document.querySelector("#angle2").value);
+
+            const angle3 = 180 - angle1 - angle2;
+
+            if (angle3 > 0) {
+                document.querySelector("#result").textContent = "A triangle can be formed!";
+            } else {
+                document.querySelector("#result").textContent = "These angles cannot form a triangle.";
+            }
+        }
+    </script>
+</body>
+</html>
